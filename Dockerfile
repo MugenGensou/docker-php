@@ -10,7 +10,7 @@ RUN apk upgrade --update \
     # install extensions.
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-png-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && NPROC=$(getconf _NPROCESSORS_ONLN) \
-    && docker-php-ext-install -j${NPROC} gd bcmath pdo_mysql opcache\
+    && docker-php-ext-install -j${NPROC} gd bcmath pdo_mysql opcache pcntl\
     # intall pecl extensions.
     && pecl channel-update pecl.php.net \
     && printf "\n" | pecl install -o redis \
